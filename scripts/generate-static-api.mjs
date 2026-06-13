@@ -25,7 +25,7 @@ await writeJson(path.join(apiDir, "catalog.json"), {
 });
 
 let fileCount = 2;
-for (const stateKey of Object.keys(catalog.states)) {
+for (const [stateKey, state] of Object.entries(catalog.states)) {
   for (let maxDifficulty = 1; maxDifficulty <= 10; maxDifficulty += 1) {
     for (const seasonalOnly of [true, false]) {
       const payload = buildTrailheadPayload(catalog, {
@@ -34,14 +34,19 @@ for (const stateKey of Object.keys(catalog.states)) {
         seasonal_only: String(seasonalOnly),
         date: generatedDate
       });
-      const outputPath = path.join(
-        apiDir,
-        stateKey,
-        `difficulty-${maxDifficulty}`,
-        `seasonal-${seasonalOnly}.json`
-      );
-      await writeJson(outputPath, payload);
-      fileCount += 1;
+
+      for (const stateSegment of getStatePathAliases(stateKey, state.label)) {
+        for (const seasonalSegment of getSeasonalPathAliases(seasonalOnly)) {
+          const outputPath = path.join(
+            apiDir,
+            stateSegment,
+            `difficulty-${maxDifficulty}`,
+            `seasonal-${seasonalSegment}.json`
+          );
+          await writeJson(outputPath, payload);
+          fileCount += 1;
+        }
+      }
     }
   }
 }
@@ -69,4 +74,16 @@ console.log(`Generated ${fileCount} static API files in public/api for ${generat
 async function writeJson(outputPath, value) {
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, `${JSON.stringify(value, null, 2)}\n`);
+}
+
+function getStatePathAliases(stateKey, label) {
+  return unique([stateKey, label, label.toLowerCase()]);
+}
+
+function getSeasonalPathAliases(seasonalOnly) {
+  return seasonalOnly ? ["true", "1", "yes", "on"] : ["false", "0", "no", "off", ""];
+}
+
+function unique(values) {
+  return [...new Set(values.filter((value) => value !== undefined && value !== null))];
 }

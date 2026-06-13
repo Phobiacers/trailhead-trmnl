@@ -1,0 +1,144 @@
+{
+  "plugin": "Trailhead",
+  "empty": false,
+  "generated_at": "2026-06-13T12:00:00.000Z",
+  "date": "2026-06-13",
+  "state": "co",
+  "state_label": "Colorado",
+  "catalog": {
+    "version": "0.1.0",
+    "updated": "2026-06-13",
+    "note": "Route paths and elevation profiles are simplified display traces for TRMNL rendering, not navigation data."
+  },
+  "filters": {
+    "max_difficulty": 6,
+    "seasonal_only": false,
+    "season_matched": true
+  },
+  "cycle": {
+    "day_of_year": 164,
+    "index": 0,
+    "index_display": 1,
+    "eligible_count": 2,
+    "state_trail_count": 5
+  },
+  "trail": {
+    "id": "co-imogene",
+    "name": "Imogene Pass",
+    "region": "Ouray-Telluride",
+    "difficulty": 6,
+    "length_mi": 17.5,
+    "elevation_gain_ft": 4100,
+    "season": {
+      "start_month": 7,
+      "end_month": 9,
+      "label": "Jul-Sep",
+      "note": "High pass access depends on snowpack and San Juan storms."
+    },
+    "highlight": "An airy mining-road traverse over one of Colorado's highest drivable passes.",
+    "obstacle": {
+      "name": "Tomboy Ledges",
+      "mile": 12.8,
+      "position_pct": 73,
+      "trace_x": 69,
+      "trace_y": 23,
+      "blurb": "Narrow shelf sections above Telluride that make the descent feel cinematic."
+    },
+    "route": {
+      "path": "M6 47 C18 37 21 23 34 24 S46 11 58 19 S68 35 78 27 S86 17 94 22"
+    },
+    "profile": {
+      "points": "0,42 10,35 20,28 30,20 40,14 50,8 60,12 70,20 80,28 90,33 100,37",
+      "min_ft": 7800,
+      "max_ft": 13114
+    },
+    "tags": [
+      "alpine",
+      "mining",
+      "shelf-road"
+    ]
+  },
+  "trails": [
+    {
+      "id": "co-imogene",
+      "name": "Imogene Pass",
+      "region": "Ouray-Telluride",
+      "difficulty": 6,
+      "length_mi": 17.5,
+      "elevation_gain_ft": 4100,
+      "season": {
+        "start_month": 7,
+        "end_month": 9,
+        "label": "Jul-Sep",
+        "note": "High pass access depends on snowpack and San Juan storms."
+      },
+      "highlight": "An airy mining-road traverse over one of Colorado's highest drivable passes.",
+      "obstacle": {
+        "name": "Tomboy Ledges",
+        "mile": 12.8,
+        "position_pct": 73,
+        "trace_x": 69,
+        "trace_y": 23,
+        "blurb": "Narrow shelf sections above Telluride that make the descent feel cinematic."
+      },
+      "route": {
+        "path": "M6 47 C18 37 21 23 34 24 S46 11 58 19 S68 35 78 27 S86 17 94 22"
+      },
+      "profile": {
+        "points": "0,42 10,35 20,28 30,20 40,14 50,8 60,12 70,20 80,28 90,33 100,37",
+        "min_ft": 7800,
+        "max_ft": 13114
+      },
+      "tags": [
+        "alpine",
+        "mining",
+        "shelf-road"
+      ]
+    },
+    {
+      "id": "co-engineer",
+      "name": "Engineer Pass",
+      "region": "Alpine Loop",
+      "difficulty": 5,
+      "length_mi": 20.5,
+      "elevation_gain_ft": 3500,
+      "season": {
+        "start_month": 7,
+        "end_month": 9,
+        "label": "Jul-Sep",
+        "note": "Check Alpine Loop conditions and lingering snow drifts."
+      },
+      "highlight": "A classic San Juan route with mines, tundra, big views, and linked pass options.",
+      "obstacle": {
+        "name": "Mineral Creek Shelf",
+        "mile": 4.2,
+        "position_pct": 20,
+        "trace_x": 24,
+        "trace_y": 35,
+        "blurb": "Rocky shelf-road climbing that makes the lower approach memorable."
+      },
+      "route": {
+        "path": "M6 39 C16 42 24 29 34 33 S43 48 53 33 S64 12 75 17 S84 32 94 19"
+      },
+      "profile": {
+        "points": "0,39 10,34 20,28 30,23 40,19 50,14 60,11 70,13 80,20 90,25 100,29",
+        "min_ft": 9600,
+        "max_ft": 12800
+      },
+      "tags": [
+        "alpine",
+        "historic",
+        "moderate"
+      ]
+    }
+  ],
+  "alternates": [
+    {
+      "id": "co-engineer",
+      "name": "Engineer Pass",
+      "difficulty": 5,
+      "length_mi": 20.5,
+      "obstacle_name": "Mineral Creek Shelf"
+    }
+  ]
+}

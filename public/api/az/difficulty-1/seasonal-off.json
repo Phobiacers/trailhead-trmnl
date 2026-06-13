@@ -1,0 +1,266 @@
+{
+  "plugin": "Trailhead",
+  "empty": false,
+  "generated_at": "2026-06-13T12:00:00.000Z",
+  "date": "2026-06-13",
+  "state": "az",
+  "state_label": "Arizona",
+  "catalog": {
+    "version": "0.1.0",
+    "updated": "2026-06-13",
+    "note": "Route paths and elevation profiles are simplified display traces for TRMNL rendering, not navigation data."
+  },
+  "filters": {
+    "max_difficulty": 1,
+    "seasonal_only": false,
+    "season_matched": false
+  },
+  "cycle": {
+    "day_of_year": 164,
+    "index": 4,
+    "index_display": 5,
+    "eligible_count": 5,
+    "state_trail_count": 5
+  },
+  "trail": {
+    "id": "az-schnebly-hill",
+    "name": "Schnebly Hill Road",
+    "region": "Sedona",
+    "difficulty": 3,
+    "length_mi": 11.8,
+    "elevation_gain_ft": 2200,
+    "season": {
+      "start_month": 3,
+      "end_month": 11,
+      "label": "Mar-Nov",
+      "note": "Can close or become rough after storms and winter weather."
+    },
+    "highlight": "A rough climb from red cliffs to pine forest with constant overlook stops.",
+    "obstacle": {
+      "name": "Vista Switchbacks",
+      "mile": 5.4,
+      "position_pct": 46,
+      "trace_x": 51,
+      "trace_y": 20,
+      "blurb": "Tight, rocky turns that trade speed for one of Sedona's best horizon lines."
+    },
+    "route": {
+      "path": "M5 48 C16 44 17 34 28 33 S38 46 48 34 S55 15 66 22 S80 36 95 18"
+    },
+    "profile": {
+      "points": "0,42 10,38 20,35 30,31 40,27 50,24 60,20 70,17 80,14 90,12 100,10",
+      "min_ft": 4300,
+      "max_ft": 6500
+    },
+    "tags": [
+      "views",
+      "forest",
+      "moderate"
+    ]
+  },
+  "trails": [
+    {
+      "id": "az-broken-arrow",
+      "name": "Broken Arrow",
+      "region": "Sedona",
+      "difficulty": 5,
+      "length_mi": 3.4,
+      "elevation_gain_ft": 520,
+      "season": {
+        "start_month": 1,
+        "end_month": 12,
+        "label": "Year-round",
+        "note": "Best outside summer heat and after checking red-rock rain conditions."
+      },
+      "highlight": "Short red-rock classic with slickrock rolls, ledges, and big Sedona views.",
+      "obstacle": {
+        "name": "Devil's Staircase",
+        "mile": 1.6,
+        "position_pct": 47,
+        "trace_x": 62,
+        "trace_y": 30,
+        "blurb": "A stepped slickrock descent and climb that gives the route its signature moment."
+      },
+      "route": {
+        "path": "M8 44 C18 35 23 18 37 22 S55 48 67 34 S83 18 94 25"
+      },
+      "profile": {
+        "points": "0,38 10,34 20,29 30,31 40,24 50,20 60,24 70,18 80,21 90,15 100,18",
+        "min_ft": 4200,
+        "max_ft": 4720
+      },
+      "tags": [
+        "red-rock",
+        "slickrock",
+        "views"
+      ]
+    },
+    {
+      "id": "az-backway-crown-king",
+      "name": "Backway to Crown King",
+      "region": "Bradshaw Mountains",
+      "difficulty": 7,
+      "length_mi": 27,
+      "elevation_gain_ft": 4300,
+      "season": {
+        "start_month": 9,
+        "end_month": 6,
+        "label": "Sep-Jun",
+        "note": "Avoid peak desert heat; winter storms can affect the upper mountain."
+      },
+      "highlight": "A desert-to-pines climb with ledgy washes, old mining remnants, and a town finish.",
+      "obstacle": {
+        "name": "The Chute",
+        "mile": 18.4,
+        "position_pct": 68,
+        "trace_x": 71,
+        "trace_y": 19,
+        "blurb": "A steep rock slot that tests tire placement before the final mountain push."
+      },
+      "route": {
+        "path": "M6 50 C15 49 19 38 26 41 S37 52 45 43 S54 24 64 30 S74 12 92 16"
+      },
+      "profile": {
+        "points": "0,42 10,41 20,38 30,34 40,32 50,25 60,24 70,16 80,12 90,9 100,8",
+        "min_ft": 1700,
+        "max_ft": 6000
+      },
+      "tags": [
+        "desert",
+        "mining",
+        "climb"
+      ]
+    },
+    {
+      "id": "az-montana-mountain",
+      "name": "Montana Mountain",
+      "region": "Queen Valley",
+      "difficulty": 5,
+      "length_mi": 27.5,
+      "elevation_gain_ft": 2800,
+      "season": {
+        "start_month": 10,
+        "end_month": 5,
+        "label": "Oct-May",
+        "note": "Cool-season route; verify washouts after monsoon storms."
+      },
+      "highlight": "A long Sonoran loop climbing into oak country above Queen Valley.",
+      "obstacle": {
+        "name": "Shelf Road Climb",
+        "mile": 12.2,
+        "position_pct": 44,
+        "trace_x": 48,
+        "trace_y": 22,
+        "blurb": "Narrow shelf turns with loose rock and a wide desert view below."
+      },
+      "route": {
+        "path": "M7 47 C17 30 29 30 35 41 S48 48 54 29 S72 13 91 24"
+      },
+      "profile": {
+        "points": "0,42 10,37 20,31 30,26 40,23 50,19 60,21 70,17 80,20 90,27 100,32",
+        "min_ft": 2100,
+        "max_ft": 4900
+      },
+      "tags": [
+        "desert",
+        "loop",
+        "shelf-road"
+      ]
+    },
+    {
+      "id": "az-charouleau-gap",
+      "name": "Charouleau Gap",
+      "region": "Santa Catalina Mountains",
+      "difficulty": 7,
+      "length_mi": 19.2,
+      "elevation_gain_ft": 2700,
+      "season": {
+        "start_month": 10,
+        "end_month": 5,
+        "label": "Oct-May",
+        "note": "Best in cooler months; check recent storm damage before committing."
+      },
+      "highlight": "A rugged desert mountain crossing with boulder gardens and Tucson basin views.",
+      "obstacle": {
+        "name": "The Step",
+        "mile": 8.1,
+        "position_pct": 42,
+        "trace_x": 43,
+        "trace_y": 36,
+        "blurb": "A blunt rock ledge where approach angle and spotter communication matter."
+      },
+      "route": {
+        "path": "M6 24 C18 18 24 43 36 37 S44 13 55 24 S63 52 78 42 S86 22 94 31"
+      },
+      "profile": {
+        "points": "0,35 10,31 20,25 30,22 40,18 50,24 60,30 70,27 80,22 90,28 100,34",
+        "min_ft": 2700,
+        "max_ft": 5200
+      },
+      "tags": [
+        "boulders",
+        "mountain",
+        "technical"
+      ]
+    },
+    {
+      "id": "az-schnebly-hill",
+      "name": "Schnebly Hill Road",
+      "region": "Sedona",
+      "difficulty": 3,
+      "length_mi": 11.8,
+      "elevation_gain_ft": 2200,
+      "season": {
+        "start_month": 3,
+        "end_month": 11,
+        "label": "Mar-Nov",
+        "note": "Can close or become rough after storms and winter weather."
+      },
+      "highlight": "A rough climb from red cliffs to pine forest with constant overlook stops.",
+      "obstacle": {
+        "name": "Vista Switchbacks",
+        "mile": 5.4,
+        "position_pct": 46,
+        "trace_x": 51,
+        "trace_y": 20,
+        "blurb": "Tight, rocky turns that trade speed for one of Sedona's best horizon lines."
+      },
+      "route": {
+        "path": "M5 48 C16 44 17 34 28 33 S38 46 48 34 S55 15 66 22 S80 36 95 18"
+      },
+      "profile": {
+        "points": "0,42 10,38 20,35 30,31 40,27 50,24 60,20 70,17 80,14 90,12 100,10",
+        "min_ft": 4300,
+        "max_ft": 6500
+      },
+      "tags": [
+        "views",
+        "forest",
+        "moderate"
+      ]
+    }
+  ],
+  "alternates": [
+    {
+      "id": "az-broken-arrow",
+      "name": "Broken Arrow",
+      "difficulty": 5,
+      "length_mi": 3.4,
+      "obstacle_name": "Devil's Staircase"
+    },
+    {
+      "id": "az-backway-crown-king",
+      "name": "Backway to Crown King",
+      "difficulty": 7,
+      "length_mi": 27,
+      "obstacle_name": "The Chute"
+    },
+    {
+      "id": "az-montana-mountain",
+      "name": "Montana Mountain",
+      "difficulty": 5,
+      "length_mi": 27.5,
+      "obstacle_name": "Shelf Road Climb"
+    }
+  ]
+}

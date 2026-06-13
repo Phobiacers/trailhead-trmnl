@@ -1,0 +1,266 @@
+{
+  "plugin": "Trailhead",
+  "empty": false,
+  "generated_at": "2026-06-13T12:00:00.000Z",
+  "date": "2026-06-13",
+  "state": "co",
+  "state_label": "Colorado",
+  "catalog": {
+    "version": "0.1.0",
+    "updated": "2026-06-13",
+    "note": "Route paths and elevation profiles are simplified display traces for TRMNL rendering, not navigation data."
+  },
+  "filters": {
+    "max_difficulty": 1,
+    "seasonal_only": false,
+    "season_matched": false
+  },
+  "cycle": {
+    "day_of_year": 164,
+    "index": 4,
+    "index_display": 5,
+    "eligible_count": 5,
+    "state_trail_count": 5
+  },
+  "trail": {
+    "id": "co-schofield-pass",
+    "name": "Schofield Pass",
+    "region": "Crested Butte-Marble",
+    "difficulty": 7,
+    "length_mi": 15.7,
+    "elevation_gain_ft": 2700,
+    "season": {
+      "start_month": 7,
+      "end_month": 9,
+      "label": "Jul-Sep",
+      "note": "Narrow shelf sections and weather make current conditions essential."
+    },
+    "highlight": "A dramatic mountain connector with waterfalls, shelf road, and serious exposure.",
+    "obstacle": {
+      "name": "Devil's Punchbowl Shelf",
+      "mile": 9.8,
+      "position_pct": 62,
+      "trace_x": 63,
+      "trace_y": 40,
+      "blurb": "A narrow exposed shelf near the punchbowl that deserves full attention."
+    },
+    "route": {
+      "path": "M6 21 C18 16 28 24 34 34 S45 51 55 42 S63 20 74 24 S84 42 95 36"
+    },
+    "profile": {
+      "points": "0,31 10,24 20,18 30,14 40,12 50,18 60,26 70,34 80,38 90,35 100,33",
+      "min_ft": 8900,
+      "max_ft": 10700
+    },
+    "tags": [
+      "waterfall",
+      "exposure",
+      "alpine"
+    ]
+  },
+  "trails": [
+    {
+      "id": "co-black-bear",
+      "name": "Black Bear Pass",
+      "region": "San Juan Mountains",
+      "difficulty": 8,
+      "length_mi": 9.9,
+      "elevation_gain_ft": 2100,
+      "season": {
+        "start_month": 7,
+        "end_month": 9,
+        "label": "Jul-Sep",
+        "note": "Usually snow-limited and commonly one-way above Telluride."
+      },
+      "highlight": "A high alpine pass dropping into Telluride on iconic steps and switchbacks.",
+      "obstacle": {
+        "name": "The Steps",
+        "mile": 7.1,
+        "position_pct": 72,
+        "trace_x": 73,
+        "trace_y": 38,
+        "blurb": "Steep rock shelves at altitude with exposure and little room for sloppy inputs."
+      },
+      "route": {
+        "path": "M7 44 C18 26 30 15 43 21 S55 48 65 34 S76 24 94 45"
+      },
+      "profile": {
+        "points": "0,36 10,28 20,20 30,13 40,10 50,14 60,22 70,31 80,38 90,42 100,44",
+        "min_ft": 8750,
+        "max_ft": 12840
+      },
+      "tags": [
+        "alpine",
+        "exposure",
+        "pass"
+      ]
+    },
+    {
+      "id": "co-imogene",
+      "name": "Imogene Pass",
+      "region": "Ouray-Telluride",
+      "difficulty": 6,
+      "length_mi": 17.5,
+      "elevation_gain_ft": 4100,
+      "season": {
+        "start_month": 7,
+        "end_month": 9,
+        "label": "Jul-Sep",
+        "note": "High pass access depends on snowpack and San Juan storms."
+      },
+      "highlight": "An airy mining-road traverse over one of Colorado's highest drivable passes.",
+      "obstacle": {
+        "name": "Tomboy Ledges",
+        "mile": 12.8,
+        "position_pct": 73,
+        "trace_x": 69,
+        "trace_y": 23,
+        "blurb": "Narrow shelf sections above Telluride that make the descent feel cinematic."
+      },
+      "route": {
+        "path": "M6 47 C18 37 21 23 34 24 S46 11 58 19 S68 35 78 27 S86 17 94 22"
+      },
+      "profile": {
+        "points": "0,42 10,35 20,28 30,20 40,14 50,8 60,12 70,20 80,28 90,33 100,37",
+        "min_ft": 7800,
+        "max_ft": 13114
+      },
+      "tags": [
+        "alpine",
+        "mining",
+        "shelf-road"
+      ]
+    },
+    {
+      "id": "co-engineer",
+      "name": "Engineer Pass",
+      "region": "Alpine Loop",
+      "difficulty": 5,
+      "length_mi": 20.5,
+      "elevation_gain_ft": 3500,
+      "season": {
+        "start_month": 7,
+        "end_month": 9,
+        "label": "Jul-Sep",
+        "note": "Check Alpine Loop conditions and lingering snow drifts."
+      },
+      "highlight": "A classic San Juan route with mines, tundra, big views, and linked pass options.",
+      "obstacle": {
+        "name": "Mineral Creek Shelf",
+        "mile": 4.2,
+        "position_pct": 20,
+        "trace_x": 24,
+        "trace_y": 35,
+        "blurb": "Rocky shelf-road climbing that makes the lower approach memorable."
+      },
+      "route": {
+        "path": "M6 39 C16 42 24 29 34 33 S43 48 53 33 S64 12 75 17 S84 32 94 19"
+      },
+      "profile": {
+        "points": "0,39 10,34 20,28 30,23 40,19 50,14 60,11 70,13 80,20 90,25 100,29",
+        "min_ft": 9600,
+        "max_ft": 12800
+      },
+      "tags": [
+        "alpine",
+        "historic",
+        "moderate"
+      ]
+    },
+    {
+      "id": "co-holy-cross-city",
+      "name": "Holy Cross City",
+      "region": "Sawatch Range",
+      "difficulty": 9,
+      "length_mi": 4.2,
+      "elevation_gain_ft": 1900,
+      "season": {
+        "start_month": 6,
+        "end_month": 10,
+        "label": "Jun-Oct",
+        "note": "High-elevation snow and runoff can shorten the season."
+      },
+      "highlight": "A short, hard climb toward a ghost town with rocks stacked the whole way.",
+      "obstacle": {
+        "name": "Cleveland Rock",
+        "mile": 3.4,
+        "position_pct": 81,
+        "trace_x": 80,
+        "trace_y": 18,
+        "blurb": "A marquee optional climb where even built rigs stop to study lines."
+      },
+      "route": {
+        "path": "M8 48 C16 39 24 40 31 32 S39 18 51 25 S61 44 70 31 S79 15 93 18"
+      },
+      "profile": {
+        "points": "0,42 10,37 20,31 30,26 40,22 50,18 60,17 70,14 80,10 90,12 100,14",
+        "min_ft": 9200,
+        "max_ft": 11100
+      },
+      "tags": [
+        "technical",
+        "ghost-town",
+        "rocks"
+      ]
+    },
+    {
+      "id": "co-schofield-pass",
+      "name": "Schofield Pass",
+      "region": "Crested Butte-Marble",
+      "difficulty": 7,
+      "length_mi": 15.7,
+      "elevation_gain_ft": 2700,
+      "season": {
+        "start_month": 7,
+        "end_month": 9,
+        "label": "Jul-Sep",
+        "note": "Narrow shelf sections and weather make current conditions essential."
+      },
+      "highlight": "A dramatic mountain connector with waterfalls, shelf road, and serious exposure.",
+      "obstacle": {
+        "name": "Devil's Punchbowl Shelf",
+        "mile": 9.8,
+        "position_pct": 62,
+        "trace_x": 63,
+        "trace_y": 40,
+        "blurb": "A narrow exposed shelf near the punchbowl that deserves full attention."
+      },
+      "route": {
+        "path": "M6 21 C18 16 28 24 34 34 S45 51 55 42 S63 20 74 24 S84 42 95 36"
+      },
+      "profile": {
+        "points": "0,31 10,24 20,18 30,14 40,12 50,18 60,26 70,34 80,38 90,35 100,33",
+        "min_ft": 8900,
+        "max_ft": 10700
+      },
+      "tags": [
+        "waterfall",
+        "exposure",
+        "alpine"
+      ]
+    }
+  ],
+  "alternates": [
+    {
+      "id": "co-black-bear",
+      "name": "Black Bear Pass",
+      "difficulty": 8,
+      "length_mi": 9.9,
+      "obstacle_name": "The Steps"
+    },
+    {
+      "id": "co-imogene",
+      "name": "Imogene Pass",
+      "difficulty": 6,
+      "length_mi": 17.5,
+      "obstacle_name": "Tomboy Ledges"
+    },
+    {
+      "id": "co-engineer",
+      "name": "Engineer Pass",
+      "difficulty": 5,
+      "length_mi": 20.5,
+      "obstacle_name": "Mineral Creek Shelf"
+    }
+  ]
+}
