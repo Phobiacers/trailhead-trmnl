@@ -35,7 +35,7 @@ git init
 git add .
 git commit -m "Initial Trailhead TRMNL plugin"
 git branch -M main
-git remote add origin git@github.com:YOUR-GITHUB-USERNAME/trailhead-trmnl.git
+git remote add origin https://github.com/Phobiacers/trailhead-trmnl.git
 git push -u origin main
 ```
 
@@ -45,7 +45,7 @@ git push -u origin main
 6. Your polling JSON will be available at:
 
 ```text
-https://YOUR-GITHUB-USERNAME.github.io/trailhead-trmnl/api/ut/difficulty-8/seasonal-true.json
+https://Phobiacers.github.io/trailhead-trmnl/api/ut/difficulty-8/seasonal-true.json
 ```
 
 ## Configure the TRMNL import ZIP
@@ -53,7 +53,7 @@ https://YOUR-GITHUB-USERNAME.github.io/trailhead-trmnl/api/ut/difficulty-8/seaso
 Update the placeholder in `trmnl-import/settings.yml`:
 
 ```text
-https://YOUR-GITHUB-USERNAME.github.io/trailhead-trmnl
+https://Phobiacers.github.io/trailhead-trmnl
 ```
 
 Then rebuild the ZIP:
@@ -71,7 +71,7 @@ The TRMNL polling URL uses form fields to pick the static JSON file:
 Example:
 
 ```text
-https://YOUR-GITHUB-USERNAME.github.io/trailhead-trmnl/api/ut/difficulty-8/seasonal-true.json
+https://Phobiacers.github.io/trailhead-trmnl/api/ut/difficulty-8/seasonal-true.json
 ```
 
 The GitHub Action rebuilds those JSON files every day at 10:10 UTC so the daily trail rotation keeps moving without a server.

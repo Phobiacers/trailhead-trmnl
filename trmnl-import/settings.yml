@@ -2,7 +2,7 @@
 name: Trailhead
 strategy: polling
 refresh_interval: 1440
-polling_url: https://YOUR-GITHUB-USERNAME.github.io/trailhead-trmnl/api/##{{ state }}/difficulty-##{{ max_difficulty }}/seasonal-##{{ seasonal_only }}.json
+polling_url: https://Phobiacers.github.io/trailhead-trmnl/api/##{{ state }}/difficulty-##{{ max_difficulty }}/seasonal-##{{ seasonal_only }}.json
 polling_headers: ''
 polling_verb: GET
 no_screen_padding: 'no'

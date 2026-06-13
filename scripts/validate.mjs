@@ -88,8 +88,8 @@ async function validateImportFiles() {
     }
   }
 
-  if (!settings.includes("YOUR-GITHUB-USERNAME.github.io")) {
-    throw new Error("settings.yml should default to the GitHub Pages polling URL");
+  if (!settings.includes(".github.io/")) {
+    throw new Error("settings.yml should use a GitHub Pages polling URL");
   }
 
   for (const filename of requiredImportFiles.filter((name) => name.endsWith(".liquid"))) {
