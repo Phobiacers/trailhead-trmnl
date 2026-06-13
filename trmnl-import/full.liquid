@@ -125,7 +125,7 @@
   }
 </style>
 
-{% if trail.name == blank %}
+{% if trail_name == blank %}
   <div class="layout trailhead-full">
     <div class="th-panel">
       <div class="th-name">No Trailhead data</div>
@@ -137,45 +137,45 @@
     <div class="th-grid">
       <div class="th-panel th-map">
         <svg class="th-route-svg" viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Simplified trail trace">
-          <path d="{{ trail.route.path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
-          <circle cx="{{ trail.obstacle.trace_x }}" cy="{{ trail.obstacle.trace_y }}" r="3.2" fill="#fff" stroke="#000" stroke-width="2.4" />
-          <line x1="{{ trail.obstacle.trace_x }}" y1="{{ trail.obstacle.trace_y }}" x2="{{ trail.obstacle.trace_x }}" y2="60" stroke="#000" stroke-dasharray="2 2" stroke-width="1" />
+          <path d="{{ route_path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+          <circle cx="{{ obstacle_trace_x }}" cy="{{ obstacle_trace_y }}" r="3.2" fill="#fff" stroke="#000" stroke-width="2.4" />
+          <line x1="{{ obstacle_trace_x }}" y1="{{ obstacle_trace_y }}" x2="{{ obstacle_trace_x }}" y2="60" stroke="#000" stroke-dasharray="2 2" stroke-width="1" />
         </svg>
         <svg class="th-profile-svg" viewBox="0 0 100 48" preserveAspectRatio="none" aria-label="Simplified elevation profile">
-          <polyline points="{{ trail.profile.points }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+          <polyline points="{{ profile_points }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
           <line x1="0" y1="45" x2="100" y2="45" stroke="#000" stroke-width="1" />
-          <line x1="{{ trail.obstacle.position_pct }}" y1="4" x2="{{ trail.obstacle.position_pct }}" y2="45" stroke="#000" stroke-dasharray="2 2" stroke-width="1" />
+          <line x1="{{ obstacle_position_pct }}" y1="4" x2="{{ obstacle_position_pct }}" y2="45" stroke="#000" stroke-dasharray="2 2" stroke-width="1" />
         </svg>
         <div class="th-meta">
-          <span>{{ trail.profile.min_ft }} ft</span>
-          <span>{{ trail.obstacle.position_pct }}% route</span>
-          <span>{{ trail.profile.max_ft }} ft</span>
+          <span>{{ profile_min_ft }} ft</span>
+          <span>{{ obstacle_position_pct }}% route</span>
+          <span>{{ profile_max_ft }} ft</span>
         </div>
       </div>
 
       <div class="th-info">
         <div>
-          <div class="th-kicker">{{ state_label }} / {{ trail.region }} / {{ trail.season.label }}</div>
-          <div class="th-name" data-value-fit="true" data-value-fit-max-height="96">{{ trail.name }}</div>
+          <div class="th-kicker">{{ state_label }} / {{ trail_region }} / {{ season_label }}</div>
+          <div class="th-name" data-value-fit="true" data-value-fit-max-height="96">{{ trail_name }}</div>
         </div>
         <div class="th-stats">
           <div class="th-stat">
-            <span class="th-stat-value">{{ trail.difficulty }}/10</span>
+            <span class="th-stat-value">{{ difficulty }}/10</span>
             <span class="th-stat-label">Difficulty</span>
           </div>
           <div class="th-stat">
-            <span class="th-stat-value">{{ trail.length_mi }}</span>
+            <span class="th-stat-value">{{ length_mi }}</span>
             <span class="th-stat-label">Miles</span>
           </div>
           <div class="th-stat">
-            <span class="th-stat-value">{{ trail.elevation_gain_ft }}</span>
+            <span class="th-stat-value">{{ elevation_gain_ft }}</span>
             <span class="th-stat-label">Ft Gain</span>
           </div>
         </div>
-        <div class="th-highlight">{{ trail.highlight }}</div>
+        <div class="th-highlight">{{ highlight }}</div>
         <div class="th-obstacle">
-          <span class="th-obstacle-name">{{ trail.obstacle.name }}</span>
-          <span class="th-obstacle-copy">{{ trail.obstacle.blurb }}</span>
+          <span class="th-obstacle-name">{{ obstacle_name }}</span>
+          <span class="th-obstacle-copy">{{ obstacle_blurb }}</span>
         </div>
       </div>
     </div>
@@ -184,5 +184,5 @@
 
 <div class="title_bar">
   <span class="title">Trailhead</span>
-  <span class="instance">{{ state_label }} trail {{ cycle.index_display }}/{{ cycle.eligible_count }}</span>
+  <span class="instance">{{ state_label }} trail {{ cycle_index_display }}/{{ cycle_eligible_count }}</span>
 </div>

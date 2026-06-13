@@ -73,7 +73,7 @@ console.log(`Generated ${fileCount} static API files in public/api for ${generat
 
 async function writeJson(outputPath, value) {
   await mkdir(path.dirname(outputPath), { recursive: true });
-  await writeFile(outputPath, `${JSON.stringify(value, null, 2)}\n`);
+  await writeFile(outputPath, `${JSON.stringify(value)}\n`);
 }
 
 function getStatePathAliases(stateKey, label) {

@@ -94,7 +94,7 @@ async function validateImportFiles() {
 
   for (const filename of requiredImportFiles.filter((name) => name.endsWith(".liquid"))) {
     const template = await readFile(path.join(importDir, filename), "utf8");
-    for (const expected of ["trail.route.path", "trail.obstacle", "title_bar"]) {
+    for (const expected of ["route_path", "obstacle_name", "title_bar"]) {
       if (!template.includes(expected)) {
         throw new Error(`${filename} is missing ${expected}`);
       }
@@ -109,7 +109,7 @@ async function validateStaticApi() {
   });
 
   const sample = JSON.parse(await readFile(samplePath, "utf8"));
-  if (!sample.trail || sample.state !== "ut" || sample.filters.max_difficulty !== 8) {
+  if (!sample.trail_name || sample.state !== "ut" || sample.max_difficulty !== 8) {
     throw new Error("Static API sample did not include the expected Utah trail payload");
   }
 }
@@ -128,7 +128,7 @@ async function validateWorker() {
   }
 
   const payload = await response.json();
-  if (!payload.trail || payload.state !== "ut" || payload.empty) {
+  if (!payload.trail_name || payload.state !== "ut" || payload.empty) {
     throw new Error("Worker payload did not include the selected Utah trail");
   }
 }

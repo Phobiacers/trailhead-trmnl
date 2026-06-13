@@ -67,7 +67,7 @@
   }
 </style>
 
-{% if trail.name == blank %}
+{% if trail_name == blank %}
   <div class="layout trailhead-half-v">
     <div class="thv-name">No Trailhead data</div>
     <div class="thv-obstacle">{{ message }}</div>
@@ -75,22 +75,22 @@
 {% else %}
   <div class="layout trailhead-half-v">
     <div>
-      <div class="thv-kicker">{{ state_label }} / {{ trail.region }} / {{ trail.season.label }}</div>
-      <div class="thv-name" data-value-fit="true" data-value-fit-max-height="70">{{ trail.name }}</div>
+      <div class="thv-kicker">{{ state_label }} / {{ trail_region }} / {{ season_label }}</div>
+      <div class="thv-name" data-value-fit="true" data-value-fit-max-height="70">{{ trail_name }}</div>
     </div>
     <div class="thv-stats">
-      <div class="thv-stat"><strong>{{ trail.difficulty }}/10</strong>Difficulty</div>
-      <div class="thv-stat"><strong>{{ trail.length_mi }}</strong>Miles</div>
-      <div class="thv-stat"><strong>{{ trail.elevation_gain_ft }}</strong>Ft Gain</div>
+      <div class="thv-stat"><strong>{{ difficulty }}/10</strong>Difficulty</div>
+      <div class="thv-stat"><strong>{{ length_mi }}</strong>Miles</div>
+      <div class="thv-stat"><strong>{{ elevation_gain_ft }}</strong>Ft Gain</div>
     </div>
     <svg class="thv-route" viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Simplified trail trace">
-      <path d="{{ trail.route.path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
-      <circle cx="{{ trail.obstacle.trace_x }}" cy="{{ trail.obstacle.trace_y }}" r="3.2" fill="#fff" stroke="#000" stroke-width="2.4" />
-      <line x1="{{ trail.obstacle.trace_x }}" y1="{{ trail.obstacle.trace_y }}" x2="{{ trail.obstacle.trace_x }}" y2="60" stroke="#000" stroke-dasharray="2 2" stroke-width="1" />
+      <path d="{{ route_path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+      <circle cx="{{ obstacle_trace_x }}" cy="{{ obstacle_trace_y }}" r="3.2" fill="#fff" stroke="#000" stroke-width="2.4" />
+      <line x1="{{ obstacle_trace_x }}" y1="{{ obstacle_trace_y }}" x2="{{ obstacle_trace_x }}" y2="60" stroke="#000" stroke-dasharray="2 2" stroke-width="1" />
     </svg>
     <div class="thv-obstacle">
-      <strong>{{ trail.obstacle.name }}</strong>
-      {{ trail.obstacle.blurb }}
+      <strong>{{ obstacle_name }}</strong>
+      {{ obstacle_blurb }}
     </div>
   </div>
 {% endif %}

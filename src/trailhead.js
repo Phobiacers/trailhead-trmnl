@@ -30,7 +30,6 @@ export function buildTrailheadPayload(catalog, params = new URLSearchParams()) {
 
   const index = dayOfYear % eligible.length;
   const trail = eligible[index];
-
   return {
     plugin: "Trailhead",
     empty: false,
@@ -38,35 +37,35 @@ export function buildTrailheadPayload(catalog, params = new URLSearchParams()) {
     date: now.toISOString().slice(0, 10),
     state: stateKey,
     state_label: state.label,
-    catalog: {
-      version: catalog.metadata.version,
-      updated: catalog.metadata.updated,
-      note: catalog.metadata.route_note
-    },
-    filters: {
-      max_difficulty: maxDifficulty,
-      seasonal_only: seasonalOnly,
-      season_matched: seasonMatched
-    },
-    cycle: {
-      day_of_year: dayOfYear,
-      index,
-      index_display: index + 1,
-      eligible_count: eligible.length,
-      state_trail_count: state.trails.length
-    },
-    trail,
-    trails: eligible,
-    alternates: eligible
-      .filter((candidate) => candidate.id !== trail.id)
-      .slice(0, 3)
-      .map((candidate) => ({
-        id: candidate.id,
-        name: candidate.name,
-        difficulty: candidate.difficulty,
-        length_mi: candidate.length_mi,
-        obstacle_name: candidate.obstacle.name
-      }))
+    catalog_version: catalog.metadata.version,
+    catalog_updated: catalog.metadata.updated,
+    max_difficulty: maxDifficulty,
+    seasonal_only: seasonalOnly,
+    season_matched: seasonMatched,
+    cycle_day_of_year: dayOfYear,
+    cycle_index: index,
+    cycle_index_display: index + 1,
+    cycle_eligible_count: eligible.length,
+    cycle_state_trail_count: state.trails.length,
+    trail_id: trail.id,
+    trail_name: trail.name,
+    trail_region: trail.region,
+    difficulty: trail.difficulty,
+    length_mi: trail.length_mi,
+    elevation_gain_ft: trail.elevation_gain_ft,
+    season_label: trail.season.label,
+    season_note: trail.season.note,
+    highlight: trail.highlight,
+    obstacle_name: trail.obstacle.name,
+    obstacle_mile: trail.obstacle.mile,
+    obstacle_position_pct: trail.obstacle.position_pct,
+    obstacle_trace_x: trail.obstacle.trace_x,
+    obstacle_trace_y: trail.obstacle.trace_y,
+    obstacle_blurb: trail.obstacle.blurb,
+    route_path: trail.route.path,
+    profile_points: trail.profile.points,
+    profile_min_ft: trail.profile.min_ft,
+    profile_max_ft: trail.profile.max_ft
   };
 }
 

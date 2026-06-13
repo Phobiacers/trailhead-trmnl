@@ -77,7 +77,7 @@
   }
 </style>
 
-{% if trail.name == blank %}
+{% if trail_name == blank %}
   <div class="layout trailhead-half-h">
     <div class="thh-panel">
       <div class="thh-name">No data</div>
@@ -88,23 +88,23 @@
   <div class="layout trailhead-half-h">
     <div class="thh-panel">
       <svg class="thh-route" viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Simplified trail trace">
-        <path d="{{ trail.route.path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
-        <circle cx="{{ trail.obstacle.trace_x }}" cy="{{ trail.obstacle.trace_y }}" r="3.2" fill="#fff" stroke="#000" stroke-width="2.4" />
+        <path d="{{ route_path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+        <circle cx="{{ obstacle_trace_x }}" cy="{{ obstacle_trace_y }}" r="3.2" fill="#fff" stroke="#000" stroke-width="2.4" />
       </svg>
       <svg class="thh-profile" viewBox="0 0 100 48" preserveAspectRatio="none" aria-label="Simplified elevation profile">
-        <polyline points="{{ trail.profile.points }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
-        <line x1="{{ trail.obstacle.position_pct }}" y1="3" x2="{{ trail.obstacle.position_pct }}" y2="45" stroke="#000" stroke-dasharray="2 2" stroke-width="1" />
+        <polyline points="{{ profile_points }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+        <line x1="{{ obstacle_position_pct }}" y1="3" x2="{{ obstacle_position_pct }}" y2="45" stroke="#000" stroke-dasharray="2 2" stroke-width="1" />
       </svg>
     </div>
     <div class="thh-copy">
-      <div class="thh-kicker">{{ state_label }} / {{ trail.region }} / {{ trail.season.label }}</div>
-      <div class="thh-name" data-value-fit="true" data-value-fit-max-height="62">{{ trail.name }}</div>
+      <div class="thh-kicker">{{ state_label }} / {{ trail_region }} / {{ season_label }}</div>
+      <div class="thh-name" data-value-fit="true" data-value-fit-max-height="62">{{ trail_name }}</div>
       <div class="thh-stats">
-        <div class="thh-stat"><strong>{{ trail.difficulty }}/10</strong>diff</div>
-        <div class="thh-stat"><strong>{{ trail.length_mi }}</strong>mi</div>
-        <div class="thh-stat"><strong>{{ trail.elevation_gain_ft }}</strong>ft gain</div>
+        <div class="thh-stat"><strong>{{ difficulty }}/10</strong>diff</div>
+        <div class="thh-stat"><strong>{{ length_mi }}</strong>mi</div>
+        <div class="thh-stat"><strong>{{ elevation_gain_ft }}</strong>ft gain</div>
       </div>
-      <div class="thh-obstacle">{{ trail.obstacle.name }}: {{ trail.obstacle.blurb }}</div>
+      <div class="thh-obstacle">{{ obstacle_name }}: {{ obstacle_blurb }}</div>
     </div>
   </div>
 {% endif %}

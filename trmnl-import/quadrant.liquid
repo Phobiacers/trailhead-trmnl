@@ -56,22 +56,22 @@
   }
 </style>
 
-{% if trail.name == blank %}
+{% if trail_name == blank %}
   <div class="layout trailhead-quad">
     <div class="thq-name">No data</div>
     <div class="thq-obstacle">{{ message }}</div>
   </div>
 {% else %}
   <div class="layout trailhead-quad">
-    <div class="thq-kicker">{{ state_label }} / {{ trail.season.label }}</div>
-    <div class="thq-name" data-value-fit="true" data-value-fit-max-height="48">{{ trail.name }}</div>
+    <div class="thq-kicker">{{ state_label }} / {{ season_label }}</div>
+    <div class="thq-name" data-value-fit="true" data-value-fit-max-height="48">{{ trail_name }}</div>
     <svg class="thq-route" viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Simplified trail trace">
-      <path d="{{ trail.route.path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
-      <circle cx="{{ trail.obstacle.trace_x }}" cy="{{ trail.obstacle.trace_y }}" r="3.4" fill="#fff" stroke="#000" stroke-width="2.4" />
+      <path d="{{ route_path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+      <circle cx="{{ obstacle_trace_x }}" cy="{{ obstacle_trace_y }}" r="3.4" fill="#fff" stroke="#000" stroke-width="2.4" />
     </svg>
     <div class="thq-footer">
-      <div class="thq-diff">{{ trail.difficulty }}/10</div>
-      <div class="thq-obstacle">{{ trail.obstacle.name }} at {{ trail.obstacle.position_pct }}%</div>
+      <div class="thq-diff">{{ difficulty }}/10</div>
+      <div class="thq-obstacle">{{ obstacle_name }} at {{ obstacle_position_pct }}%</div>
     </div>
   </div>
 {% endif %}
