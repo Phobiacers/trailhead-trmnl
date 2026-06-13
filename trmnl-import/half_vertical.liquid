@@ -67,6 +67,40 @@
   }
 </style>
 
+{% if trail_name == blank and data.trail_name != blank %}
+  {% assign trail_name = data.trail_name %}
+  {% assign state_label = data.state_label %}
+  {% assign trail_region = data.trail_region %}
+  {% assign season_label = data.season_label %}
+  {% assign difficulty = data.difficulty %}
+  {% assign length_mi = data.length_mi %}
+  {% assign elevation_gain_ft = data.elevation_gain_ft %}
+  {% assign obstacle_name = data.obstacle_name %}
+  {% assign obstacle_blurb = data.obstacle_blurb %}
+  {% assign obstacle_trace_x = data.obstacle_trace_x %}
+  {% assign obstacle_trace_y = data.obstacle_trace_y %}
+  {% assign route_path = data.route_path %}
+  {% assign message = data.message %}
+{% endif %}
+{% if trail_name == blank and IDX_0.trail_name != blank %}
+  {% assign trail_name = IDX_0.trail_name %}
+  {% assign state_label = IDX_0.state_label %}
+  {% assign trail_region = IDX_0.trail_region %}
+  {% assign season_label = IDX_0.season_label %}
+  {% assign difficulty = IDX_0.difficulty %}
+  {% assign length_mi = IDX_0.length_mi %}
+  {% assign elevation_gain_ft = IDX_0.elevation_gain_ft %}
+  {% assign obstacle_name = IDX_0.obstacle_name %}
+  {% assign obstacle_blurb = IDX_0.obstacle_blurb %}
+  {% assign obstacle_trace_x = IDX_0.obstacle_trace_x %}
+  {% assign obstacle_trace_y = IDX_0.obstacle_trace_y %}
+  {% assign route_path = IDX_0.route_path %}
+  {% assign message = IDX_0.message %}
+{% endif %}
+{% if message == blank %}
+  {% assign message = "No Trailhead data found. Check polling URL, save, then force refresh." %}
+{% endif %}
+
 {% if trail_name == blank %}
   <div class="layout trailhead-half-v">
     <div class="thv-name">No Trailhead data</div>
