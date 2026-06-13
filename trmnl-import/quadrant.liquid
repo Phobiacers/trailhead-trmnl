@@ -1,0 +1,82 @@
+<style>
+  .trailhead-quad {
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    font-family: Inter, Arial, sans-serif;
+    gap: 7px;
+    height: 100%;
+  }
+
+  .thq-kicker {
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .thq-name {
+    font-size: 25px;
+    font-weight: 900;
+    line-height: 0.95;
+  }
+
+  .thq-route {
+    background:
+      linear-gradient(90deg, #ddd 1px, transparent 1px),
+      linear-gradient(#ddd 1px, transparent 1px);
+    background-size: 15px 15px;
+    border: 2px solid #000;
+    flex: 1;
+    min-height: 78px;
+    width: 100%;
+  }
+
+  .thq-footer {
+    display: grid;
+    gap: 6px;
+    grid-template-columns: 58px 1fr;
+  }
+
+  .thq-diff {
+    background: #000;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1;
+    padding: 7px 5px;
+    text-align: center;
+  }
+
+  .thq-obstacle {
+    border-top: 2px solid #000;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.08;
+    padding-top: 5px;
+  }
+</style>
+
+{% if empty %}
+  <div class="layout trailhead-quad">
+    <div class="thq-name">No data</div>
+    <div class="thq-obstacle">{{ message }}</div>
+  </div>
+{% else %}
+  <div class="layout trailhead-quad">
+    <div class="thq-kicker">{{ state_label }} / {{ trail.season.label }}</div>
+    <div class="thq-name" data-value-fit="true" data-value-fit-max-height="48">{{ trail.name }}</div>
+    <svg class="thq-route" viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Simplified trail trace">
+      <path d="{{ trail.route.path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+      <circle cx="{{ trail.obstacle.trace_x }}" cy="{{ trail.obstacle.trace_y }}" r="3.4" fill="#fff" stroke="#000" stroke-width="2.4" />
+    </svg>
+    <div class="thq-footer">
+      <div class="thq-diff">{{ trail.difficulty }}/10</div>
+      <div class="thq-obstacle">{{ trail.obstacle.name }} at {{ trail.obstacle.position_pct }}%</div>
+    </div>
+  </div>
+{% endif %}
+
+<div class="title_bar">
+  <span class="title">Trailhead</span>
+  <span class="instance">{{ state_label }}</span>
+</div>

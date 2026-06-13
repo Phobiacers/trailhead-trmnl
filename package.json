@@ -1,0 +1,16 @@
+{
+  "name": "trailhead-trmnl-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "npm run generate:worker && npm run generate:static",
+    "generate:static": "node scripts/generate-static-api.mjs",
+    "generate:worker": "node scripts/build-worker-catalog.mjs",
+    "validate": "node scripts/validate.mjs",
+    "zip": "mkdir -p dist && rm -f dist/trailhead-private-plugin.zip && (cd trmnl-import && zip -q ../dist/trailhead-private-plugin.zip settings.yml full.liquid half_horizontal.liquid half_vertical.liquid quadrant.liquid)",
+    "build": "npm run generate && npm run validate && npm run zip",
+    "dev": "npm run generate:worker && npx wrangler dev",
+    "deploy:worker": "npm run generate:worker && npx wrangler deploy"
+  }
+}

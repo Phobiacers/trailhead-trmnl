@@ -1,0 +1,101 @@
+<style>
+  .trailhead-half-v {
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    font-family: Inter, Arial, sans-serif;
+    gap: 10px;
+    height: 100%;
+  }
+
+  .thv-kicker {
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .thv-name {
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 0.95;
+  }
+
+  .thv-stats {
+    display: grid;
+    gap: 6px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .thv-stat {
+    border: 1px solid #000;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 6px;
+    text-transform: uppercase;
+  }
+
+  .thv-stat strong {
+    display: block;
+    font-size: 19px;
+    line-height: 1;
+  }
+
+  .thv-route {
+    background:
+      linear-gradient(90deg, #ddd 1px, transparent 1px),
+      linear-gradient(#ddd 1px, transparent 1px);
+    background-size: 17px 17px;
+    border: 2px solid #000;
+    flex: 1;
+    min-height: 150px;
+    width: 100%;
+  }
+
+  .thv-obstacle {
+    border-left: 8px solid #000;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.15;
+    padding-left: 8px;
+  }
+
+  .thv-obstacle strong {
+    display: block;
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+</style>
+
+{% if empty %}
+  <div class="layout trailhead-half-v">
+    <div class="thv-name">No Trailhead data</div>
+    <div class="thv-obstacle">{{ message }}</div>
+  </div>
+{% else %}
+  <div class="layout trailhead-half-v">
+    <div>
+      <div class="thv-kicker">{{ state_label }} / {{ trail.region }} / {{ trail.season.label }}</div>
+      <div class="thv-name" data-value-fit="true" data-value-fit-max-height="70">{{ trail.name }}</div>
+    </div>
+    <div class="thv-stats">
+      <div class="thv-stat"><strong>{{ trail.difficulty }}/10</strong>Difficulty</div>
+      <div class="thv-stat"><strong>{{ trail.length_mi }}</strong>Miles</div>
+      <div class="thv-stat"><strong>{{ trail.elevation_gain_ft }}</strong>Ft Gain</div>
+    </div>
+    <svg class="thv-route" viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Simplified trail trace">
+      <path d="{{ trail.route.path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+      <circle cx="{{ trail.obstacle.trace_x }}" cy="{{ trail.obstacle.trace_y }}" r="3.2" fill="#fff" stroke="#000" stroke-width="2.4" />
+      <line x1="{{ trail.obstacle.trace_x }}" y1="{{ trail.obstacle.trace_y }}" x2="{{ trail.obstacle.trace_x }}" y2="60" stroke="#000" stroke-dasharray="2 2" stroke-width="1" />
+    </svg>
+    <div class="thv-obstacle">
+      <strong>{{ trail.obstacle.name }}</strong>
+      {{ trail.obstacle.blurb }}
+    </div>
+  </div>
+{% endif %}
+
+<div class="title_bar">
+  <span class="title">Trailhead</span>
+  <span class="instance">{{ state_label }}</span>
+</div>

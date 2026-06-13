@@ -1,0 +1,100 @@
+{
+  "plugin": "Trailhead",
+  "empty": false,
+  "generated_at": "2026-06-13T12:00:00.000Z",
+  "date": "2026-06-13",
+  "state": "az",
+  "state_label": "Arizona",
+  "catalog": {
+    "version": "0.1.0",
+    "updated": "2026-06-13",
+    "note": "Route paths and elevation profiles are simplified display traces for TRMNL rendering, not navigation data."
+  },
+  "filters": {
+    "max_difficulty": 4,
+    "seasonal_only": true,
+    "season_matched": true
+  },
+  "cycle": {
+    "day_of_year": 164,
+    "index": 0,
+    "index_display": 1,
+    "eligible_count": 1,
+    "state_trail_count": 5
+  },
+  "trail": {
+    "id": "az-schnebly-hill",
+    "name": "Schnebly Hill Road",
+    "region": "Sedona",
+    "difficulty": 3,
+    "length_mi": 11.8,
+    "elevation_gain_ft": 2200,
+    "season": {
+      "start_month": 3,
+      "end_month": 11,
+      "label": "Mar-Nov",
+      "note": "Can close or become rough after storms and winter weather."
+    },
+    "highlight": "A rough climb from red cliffs to pine forest with constant overlook stops.",
+    "obstacle": {
+      "name": "Vista Switchbacks",
+      "mile": 5.4,
+      "position_pct": 46,
+      "trace_x": 51,
+      "trace_y": 20,
+      "blurb": "Tight, rocky turns that trade speed for one of Sedona's best horizon lines."
+    },
+    "route": {
+      "path": "M5 48 C16 44 17 34 28 33 S38 46 48 34 S55 15 66 22 S80 36 95 18"
+    },
+    "profile": {
+      "points": "0,42 10,38 20,35 30,31 40,27 50,24 60,20 70,17 80,14 90,12 100,10",
+      "min_ft": 4300,
+      "max_ft": 6500
+    },
+    "tags": [
+      "views",
+      "forest",
+      "moderate"
+    ]
+  },
+  "trails": [
+    {
+      "id": "az-schnebly-hill",
+      "name": "Schnebly Hill Road",
+      "region": "Sedona",
+      "difficulty": 3,
+      "length_mi": 11.8,
+      "elevation_gain_ft": 2200,
+      "season": {
+        "start_month": 3,
+        "end_month": 11,
+        "label": "Mar-Nov",
+        "note": "Can close or become rough after storms and winter weather."
+      },
+      "highlight": "A rough climb from red cliffs to pine forest with constant overlook stops.",
+      "obstacle": {
+        "name": "Vista Switchbacks",
+        "mile": 5.4,
+        "position_pct": 46,
+        "trace_x": 51,
+        "trace_y": 20,
+        "blurb": "Tight, rocky turns that trade speed for one of Sedona's best horizon lines."
+      },
+      "route": {
+        "path": "M5 48 C16 44 17 34 28 33 S38 46 48 34 S55 15 66 22 S80 36 95 18"
+      },
+      "profile": {
+        "points": "0,42 10,38 20,35 30,31 40,27 50,24 60,20 70,17 80,14 90,12 100,10",
+        "min_ft": 4300,
+        "max_ft": 6500
+      },
+      "tags": [
+        "views",
+        "forest",
+        "moderate"
+      ]
+    }
+  ],
+  "alternates": []
+}

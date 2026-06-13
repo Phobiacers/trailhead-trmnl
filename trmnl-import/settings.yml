@@ -1,0 +1,32 @@
+---
+name: Trailhead
+strategy: polling
+refresh_interval: 1440
+polling_url: https://YOUR-GITHUB-USERNAME.github.io/trailhead-trmnl/api/##{{ state }}/difficulty-##{{ max_difficulty }}/seasonal-##{{ seasonal_only }}.json
+polling_headers: ''
+polling_verb: GET
+no_screen_padding: 'no'
+dark_mode: 'no'
+custom_fields:
+- keyname: state
+  field_type: select
+  name: State
+  description: Pick the trail catalog to rotate through.
+  options:
+  - Arizona: az
+  - California: ca
+  - Colorado: co
+  - Utah: ut
+  default: ut
+- keyname: max_difficulty
+  field_type: number
+  name: Max Difficulty
+  description: Hide trails above this rating.
+  min: 1
+  max: 10
+  default: 10
+- keyname: seasonal_only
+  field_type: boolean
+  name: Seasonal Filter
+  description: Prefer trails inside their season window.
+  default: true

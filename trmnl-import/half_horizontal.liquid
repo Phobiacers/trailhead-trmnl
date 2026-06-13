@@ -1,0 +1,115 @@
+<style>
+  .trailhead-half-h {
+    color: #000;
+    display: grid;
+    font-family: Inter, Arial, sans-serif;
+    gap: 12px;
+    grid-template-columns: 0.95fr 1.05fr;
+    height: 100%;
+  }
+
+  .thh-panel {
+    border: 2px solid #000;
+    min-height: 0;
+    padding: 8px;
+  }
+
+  .thh-route {
+    background:
+      linear-gradient(90deg, #ddd 1px, transparent 1px),
+      linear-gradient(#ddd 1px, transparent 1px);
+    background-size: 18px 18px;
+    height: 138px;
+    width: 100%;
+  }
+
+  .thh-profile {
+    height: 40px;
+    margin-top: 6px;
+    width: 100%;
+  }
+
+  .thh-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+  }
+
+  .thh-kicker {
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .thh-name {
+    font-size: 31px;
+    font-weight: 900;
+    line-height: 0.95;
+  }
+
+  .thh-stats {
+    display: grid;
+    gap: 6px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .thh-stat {
+    border-top: 2px solid #000;
+    font-size: 12px;
+    font-weight: 800;
+    padding-top: 5px;
+  }
+
+  .thh-stat strong {
+    display: block;
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .thh-obstacle {
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.15;
+    padding: 7px;
+  }
+</style>
+
+{% if empty %}
+  <div class="layout trailhead-half-h">
+    <div class="thh-panel">
+      <div class="thh-name">No data</div>
+      <div class="thh-obstacle">{{ message }}</div>
+    </div>
+  </div>
+{% else %}
+  <div class="layout trailhead-half-h">
+    <div class="thh-panel">
+      <svg class="thh-route" viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Simplified trail trace">
+        <path d="{{ trail.route.path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+        <circle cx="{{ trail.obstacle.trace_x }}" cy="{{ trail.obstacle.trace_y }}" r="3.2" fill="#fff" stroke="#000" stroke-width="2.4" />
+      </svg>
+      <svg class="thh-profile" viewBox="0 0 100 48" preserveAspectRatio="none" aria-label="Simplified elevation profile">
+        <polyline points="{{ trail.profile.points }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+        <line x1="{{ trail.obstacle.position_pct }}" y1="3" x2="{{ trail.obstacle.position_pct }}" y2="45" stroke="#000" stroke-dasharray="2 2" stroke-width="1" />
+      </svg>
+    </div>
+    <div class="thh-copy">
+      <div class="thh-kicker">{{ state_label }} / {{ trail.region }} / {{ trail.season.label }}</div>
+      <div class="thh-name" data-value-fit="true" data-value-fit-max-height="62">{{ trail.name }}</div>
+      <div class="thh-stats">
+        <div class="thh-stat"><strong>{{ trail.difficulty }}/10</strong>diff</div>
+        <div class="thh-stat"><strong>{{ trail.length_mi }}</strong>mi</div>
+        <div class="thh-stat"><strong>{{ trail.elevation_gain_ft }}</strong>ft gain</div>
+      </div>
+      <div class="thh-obstacle">{{ trail.obstacle.name }}: {{ trail.obstacle.blurb }}</div>
+    </div>
+  </div>
+{% endif %}
+
+<div class="title_bar">
+  <span class="title">Trailhead</span>
+  <span class="instance">{{ state_label }}</span>
+</div>
