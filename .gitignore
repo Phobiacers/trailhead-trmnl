@@ -4,3 +4,5 @@ dist/*.tmp
 .wrangler/
 .dev.vars
 npm-debug.log*
+assets/maps/source/
+assets/maps/raw/

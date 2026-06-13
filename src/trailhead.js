@@ -30,6 +30,7 @@ export function buildTrailheadPayload(catalog, params = new URLSearchParams()) {
 
   const index = dayOfYear % eligible.length;
   const trail = eligible[index];
+  const routeAnchors = getRouteAnchors(trail.route.path);
   return {
     plugin: "Trailhead",
     empty: false,
@@ -63,6 +64,10 @@ export function buildTrailheadPayload(catalog, params = new URLSearchParams()) {
     obstacle_trace_y: trail.obstacle.trace_y,
     obstacle_blurb: trail.obstacle.blurb,
     route_path: trail.route.path,
+    route_start_x: routeAnchors.startX,
+    route_start_y: routeAnchors.startY,
+    route_end_x: routeAnchors.endX,
+    route_end_y: routeAnchors.endY,
     profile_points: trail.profile.points,
     profile_min_ft: trail.profile.min_ft,
     profile_max_ft: trail.profile.max_ft
@@ -120,4 +125,17 @@ function clampInteger(value, min, max, fallback) {
   const parsed = Number.parseInt(value, 10);
   if (Number.isNaN(parsed)) return fallback;
   return Math.min(max, Math.max(min, parsed));
+}
+
+function getRouteAnchors(routePath) {
+  const coordinates = [...String(routePath).matchAll(/-?\d+(?:\.\d+)?/g)].map((match) => Number.parseFloat(match[0]));
+  if (coordinates.length < 4) {
+    return { startX: 6, startY: 43, endX: 94, endY: 31 };
+  }
+  return {
+    startX: coordinates[0],
+    startY: coordinates[1],
+    endX: coordinates[coordinates.length - 2],
+    endY: coordinates[coordinates.length - 1]
+  };
 }

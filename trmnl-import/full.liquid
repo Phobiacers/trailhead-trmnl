@@ -19,28 +19,27 @@
   .th-panel {
     border: 2px solid #000;
     min-height: 0;
-    padding: 10px;
+    padding: 8px;
   }
 
   .th-map {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 7px;
   }
 
   .th-route-svg {
-    background:
-      linear-gradient(90deg, #ddd 1px, transparent 1px),
-      linear-gradient(#ddd 1px, transparent 1px);
-    background-size: 20px 20px;
-    border-bottom: 1px solid #000;
+    background: #f7f7f7;
+    border: 1px solid #000;
     flex: 1;
-    min-height: 170px;
+    min-height: 218px;
     width: 100%;
   }
 
   .th-profile-svg {
-    height: 76px;
+    background: #fff;
+    border: 1px solid #000;
+    height: 72px;
     width: 100%;
   }
 
@@ -140,6 +139,10 @@
   {% assign obstacle_trace_x = data.obstacle_trace_x %}
   {% assign obstacle_trace_y = data.obstacle_trace_y %}
   {% assign route_path = data.route_path %}
+  {% assign route_start_x = data.route_start_x %}
+  {% assign route_start_y = data.route_start_y %}
+  {% assign route_end_x = data.route_end_x %}
+  {% assign route_end_y = data.route_end_y %}
   {% assign profile_points = data.profile_points %}
   {% assign profile_min_ft = data.profile_min_ft %}
   {% assign profile_max_ft = data.profile_max_ft %}
@@ -162,6 +165,10 @@
   {% assign obstacle_trace_x = IDX_0.obstacle_trace_x %}
   {% assign obstacle_trace_y = IDX_0.obstacle_trace_y %}
   {% assign route_path = IDX_0.route_path %}
+  {% assign route_start_x = IDX_0.route_start_x %}
+  {% assign route_start_y = IDX_0.route_start_y %}
+  {% assign route_end_x = IDX_0.route_end_x %}
+  {% assign route_end_y = IDX_0.route_end_y %}
   {% assign profile_points = IDX_0.profile_points %}
   {% assign profile_min_ft = IDX_0.profile_min_ft %}
   {% assign profile_max_ft = IDX_0.profile_max_ft %}
@@ -171,6 +178,12 @@
 {% endif %}
 {% if message == blank %}
   {% assign message = "No Trailhead data found. Check polling URL, save, then force refresh." %}
+{% endif %}
+{% if route_start_x == blank %}
+  {% assign route_start_x = 6 %}
+  {% assign route_start_y = 43 %}
+  {% assign route_end_x = 94 %}
+  {% assign route_end_y = 31 %}
 {% endif %}
 
 {% if trail_name == blank %}
@@ -184,12 +197,65 @@
   <div class="layout trailhead-full">
     <div class="th-grid">
       <div class="th-panel th-map">
-        <svg class="th-route-svg" viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Simplified trail trace">
-          <path d="{{ route_path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
-          <circle cx="{{ obstacle_trace_x }}" cy="{{ obstacle_trace_y }}" r="3.2" fill="#fff" stroke="#000" stroke-width="2.4" />
-          <line x1="{{ obstacle_trace_x }}" y1="{{ obstacle_trace_y }}" x2="{{ obstacle_trace_x }}" y2="60" stroke="#000" stroke-dasharray="2 2" stroke-width="1" />
+        <svg class="th-route-svg" viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Topo-style trail map">
+          <defs>
+            <pattern id="th-full-stipple" width="3" height="3" patternUnits="userSpaceOnUse">
+              <circle cx="0.7" cy="0.8" r="0.18" fill="#9a9a9a" />
+              <circle cx="2.2" cy="2.1" r="0.14" fill="#b6b6b6" />
+            </pattern>
+            <pattern id="th-full-trees" width="7" height="7" patternUnits="userSpaceOnUse">
+              <path d="M3.5 1.1 L5.4 5.2 L1.6 5.2 Z M3.5 3.1 L2.5 6" fill="none" stroke="#7d7d7d" stroke-width="0.35" stroke-linecap="round" stroke-linejoin="round" />
+            </pattern>
+            <clipPath id="th-full-clip">
+              <rect x="0" y="0" width="100" height="60" />
+            </clipPath>
+          </defs>
+          <rect x="0" y="0" width="100" height="60" fill="#fbfbfb" />
+          <rect x="0" y="0" width="100" height="60" fill="url(#th-full-stipple)" opacity="0.34" />
+          <g clip-path="url(#th-full-clip)">
+            <path d="M-4 16 C12 10 25 12 39 7 S68 1 105 9" fill="none" stroke="#d6d6d6" stroke-width="0.7" />
+            <path d="M-7 23 C9 18 24 20 38 15 S69 9 107 17" fill="none" stroke="#c9c9c9" stroke-width="0.7" />
+            <path d="M-6 31 C9 25 24 29 39 23 S69 17 107 27" fill="none" stroke="#bdbdbd" stroke-width="0.75" />
+            <path d="M-5 40 C9 33 25 38 39 31 S71 26 108 38" fill="none" stroke="#cacaca" stroke-width="0.7" />
+            <path d="M-8 50 C7 44 26 48 42 42 S74 37 107 48" fill="none" stroke="#d4d4d4" stroke-width="0.7" />
+            <path d="M8 8 C18 4 27 9 35 5 S51 3 62 7 S83 8 96 3" fill="none" stroke="#e1e1e1" stroke-width="0.45" />
+            <path d="M5 51 C12 48 20 50 28 47 S41 44 51 48 S68 52 82 48 S95 44 103 50" fill="none" stroke="#b5b5b5" stroke-width="0.55" />
+            <path d="M3 46 C14 39 29 42 38 37 S57 31 68 35 S83 35 98 29" fill="none" stroke="#888" stroke-dasharray="1.4 1.5" stroke-width="0.5" />
+            <path d="M0 13 C16 17 22 24 37 24 S63 22 75 15 S92 15 104 20" fill="none" stroke="#9d9d9d" stroke-dasharray="0.9 1.6" stroke-width="0.45" />
+            <path d="M7 39 C13 35 18 34 24 36 C29 38 34 36 39 32 C43 28 47 27 53 29 C59 31 63 29 68 24 C72 20 78 19 84 22 C90 25 96 23 102 18 L102 60 L7 60 Z" fill="url(#th-full-trees)" opacity="0.38" />
+            <path d="M10 46 C17 42 23 44 28 48 C34 53 43 51 48 45 C53 39 62 39 68 44 C72 48 80 49 88 45 C94 42 100 43 106 47 L106 61 L10 61 Z" fill="#ededed" opacity="0.9" />
+            <path d="M67 10 C72 8 77 9 80 12 C83 15 82 19 77 20 C72 21 67 19 65 16 C63 13 64 11 67 10 Z" fill="#dfdfdf" stroke="#777" stroke-width="0.45" />
+            <path d="M18 45 C22 42 28 42 31 45 C34 48 32 52 27 52 C22 52 18 50 16 48 C15 47 16 46 18 45 Z" fill="#e4e4e4" stroke="#777" stroke-width="0.4" />
+          </g>
+          <g font-family="Inter, Arial, sans-serif" fill="#000">
+            <text x="3" y="5.2" font-size="3" font-weight="900">TRAILHEAD TOPO</text>
+            <text x="3" y="8.5" font-size="1.85" font-weight="800">{{ trail_region }}</text>
+            <text x="84.5" y="8" font-size="4.2" font-weight="900">N</text>
+            <path d="M86.8 9 L89 14 L84.6 14 Z" fill="#000" />
+            <line x1="75" y1="55" x2="94" y2="55" stroke="#000" stroke-width="1" />
+            <line x1="75" y1="53.5" x2="75" y2="56.5" stroke="#000" stroke-width="0.7" />
+            <line x1="94" y1="53.5" x2="94" y2="56.5" stroke="#000" stroke-width="0.7" />
+            <text x="75" y="52.5" font-size="1.8" font-weight="800">ROUTE TRACE</text>
+          </g>
+          <path d="{{ route_path }}" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="7.5" />
+          <path d="{{ route_path }}" fill="none" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.4" />
+          <path d="{{ route_path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.6" />
+          <circle cx="{{ route_start_x }}" cy="{{ route_start_y }}" r="1.8" fill="#fff" stroke="#000" stroke-width="1" />
+          <circle cx="{{ route_end_x }}" cy="{{ route_end_y }}" r="1.8" fill="#000" stroke="#000" stroke-width="1" />
+          <line x1="{{ obstacle_trace_x }}" y1="{{ obstacle_trace_y }}" x2="{{ obstacle_trace_x }}" y2="60" stroke="#000" stroke-dasharray="1.5 1.5" stroke-width="0.9" />
+          <g transform="translate({{ obstacle_trace_x }} {{ obstacle_trace_y }})">
+            <path d="M0 -6 C3 -6 5.2 -3.8 5.2 -1 C5.2 2.8 0 7 0 7 C0 7 -5.2 2.8 -5.2 -1 C-5.2 -3.8 -3 -6 0 -6 Z" fill="#fff" stroke="#000" stroke-width="1.2" />
+            <circle cx="0" cy="-1" r="1.8" fill="#000" />
+          </g>
         </svg>
         <svg class="th-profile-svg" viewBox="0 0 100 48" preserveAspectRatio="none" aria-label="Simplified elevation profile">
+          <rect x="0" y="0" width="100" height="48" fill="#fff" />
+          <g stroke="#dedede" stroke-width="0.7">
+            <line x1="0" y1="12" x2="100" y2="12" />
+            <line x1="0" y1="22" x2="100" y2="22" />
+            <line x1="0" y1="32" x2="100" y2="32" />
+          </g>
+          <polygon points="0,45 {{ profile_points }} 100,45" fill="#e9e9e9" />
           <polyline points="{{ profile_points }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
           <line x1="0" y1="45" x2="100" y2="45" stroke="#000" stroke-width="1" />
           <line x1="{{ obstacle_position_pct }}" y1="4" x2="{{ obstacle_position_pct }}" y2="45" stroke="#000" stroke-dasharray="2 2" stroke-width="1" />

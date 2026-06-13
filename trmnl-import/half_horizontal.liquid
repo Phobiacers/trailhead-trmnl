@@ -15,15 +15,15 @@
   }
 
   .thh-route {
-    background:
-      linear-gradient(90deg, #ddd 1px, transparent 1px),
-      linear-gradient(#ddd 1px, transparent 1px);
-    background-size: 18px 18px;
+    background: #f7f7f7;
+    border: 1px solid #000;
     height: 138px;
     width: 100%;
   }
 
   .thh-profile {
+    background: #fff;
+    border: 1px solid #000;
     height: 40px;
     margin-top: 6px;
     width: 100%;
@@ -91,6 +91,10 @@
   {% assign obstacle_trace_x = data.obstacle_trace_x %}
   {% assign obstacle_trace_y = data.obstacle_trace_y %}
   {% assign route_path = data.route_path %}
+  {% assign route_start_x = data.route_start_x %}
+  {% assign route_start_y = data.route_start_y %}
+  {% assign route_end_x = data.route_end_x %}
+  {% assign route_end_y = data.route_end_y %}
   {% assign profile_points = data.profile_points %}
   {% assign message = data.message %}
 {% endif %}
@@ -108,11 +112,21 @@
   {% assign obstacle_trace_x = IDX_0.obstacle_trace_x %}
   {% assign obstacle_trace_y = IDX_0.obstacle_trace_y %}
   {% assign route_path = IDX_0.route_path %}
+  {% assign route_start_x = IDX_0.route_start_x %}
+  {% assign route_start_y = IDX_0.route_start_y %}
+  {% assign route_end_x = IDX_0.route_end_x %}
+  {% assign route_end_y = IDX_0.route_end_y %}
   {% assign profile_points = IDX_0.profile_points %}
   {% assign message = IDX_0.message %}
 {% endif %}
 {% if message == blank %}
   {% assign message = "No Trailhead data found. Check polling URL, save, then force refresh." %}
+{% endif %}
+{% if route_start_x == blank %}
+  {% assign route_start_x = 6 %}
+  {% assign route_start_y = 43 %}
+  {% assign route_end_x = 94 %}
+  {% assign route_end_y = 31 %}
 {% endif %}
 
 {% if trail_name == blank %}
@@ -125,11 +139,36 @@
 {% else %}
   <div class="layout trailhead-half-h">
     <div class="thh-panel">
-      <svg class="thh-route" viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Simplified trail trace">
-        <path d="{{ route_path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+      <svg class="thh-route" viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Topo-style trail trace">
+        <defs>
+          <pattern id="thh-stipple" width="3" height="3" patternUnits="userSpaceOnUse">
+            <circle cx="0.7" cy="0.8" r="0.16" fill="#aaa" />
+            <circle cx="2.2" cy="2.1" r="0.12" fill="#c0c0c0" />
+          </pattern>
+        </defs>
+        <rect x="0" y="0" width="100" height="60" fill="#fbfbfb" />
+        <rect x="0" y="0" width="100" height="60" fill="url(#thh-stipple)" opacity="0.35" />
+        <g fill="none" stroke-linecap="round">
+          <path d="M-5 17 C10 10 25 13 38 8 S68 1 106 11" stroke="#d5d5d5" stroke-width="0.7" />
+          <path d="M-7 28 C9 20 23 23 38 17 S69 10 108 21" stroke="#c5c5c5" stroke-width="0.75" />
+          <path d="M-5 40 C10 33 25 38 40 31 S71 26 107 38" stroke="#bdbdbd" stroke-width="0.7" />
+          <path d="M4 48 C15 42 29 45 38 38 S57 31 68 35 S83 35 98 29" stroke="#8c8c8c" stroke-dasharray="1.4 1.5" stroke-width="0.5" />
+        </g>
+        <path d="M67 10 C72 8 77 9 80 12 C83 15 82 19 77 20 C72 21 67 19 65 16 C63 13 64 11 67 10 Z" fill="#dfdfdf" stroke="#777" stroke-width="0.45" />
+        <path d="{{ route_path }}" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="7" />
+        <path d="{{ route_path }}" fill="none" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" />
+        <path d="{{ route_path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5" />
+        <circle cx="{{ route_start_x }}" cy="{{ route_start_y }}" r="1.7" fill="#fff" stroke="#000" stroke-width="1" />
+        <circle cx="{{ route_end_x }}" cy="{{ route_end_y }}" r="1.7" fill="#000" stroke="#000" stroke-width="1" />
         <circle cx="{{ obstacle_trace_x }}" cy="{{ obstacle_trace_y }}" r="3.2" fill="#fff" stroke="#000" stroke-width="2.4" />
       </svg>
       <svg class="thh-profile" viewBox="0 0 100 48" preserveAspectRatio="none" aria-label="Simplified elevation profile">
+        <rect x="0" y="0" width="100" height="48" fill="#fff" />
+        <g stroke="#dedede" stroke-width="0.7">
+          <line x1="0" y1="16" x2="100" y2="16" />
+          <line x1="0" y1="30" x2="100" y2="30" />
+        </g>
+        <polygon points="0,45 {{ profile_points }} 100,45" fill="#e9e9e9" />
         <polyline points="{{ profile_points }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
         <line x1="{{ obstacle_position_pct }}" y1="3" x2="{{ obstacle_position_pct }}" y2="45" stroke="#000" stroke-dasharray="2 2" stroke-width="1" />
       </svg>

@@ -21,10 +21,7 @@
   }
 
   .thq-route {
-    background:
-      linear-gradient(90deg, #ddd 1px, transparent 1px),
-      linear-gradient(#ddd 1px, transparent 1px);
-    background-size: 15px 15px;
+    background: #f7f7f7;
     border: 2px solid #000;
     flex: 1;
     min-height: 78px;
@@ -66,6 +63,10 @@
   {% assign obstacle_trace_x = data.obstacle_trace_x %}
   {% assign obstacle_trace_y = data.obstacle_trace_y %}
   {% assign route_path = data.route_path %}
+  {% assign route_start_x = data.route_start_x %}
+  {% assign route_start_y = data.route_start_y %}
+  {% assign route_end_x = data.route_end_x %}
+  {% assign route_end_y = data.route_end_y %}
   {% assign message = data.message %}
 {% endif %}
 {% if trail_name == blank and IDX_0.trail_name != blank %}
@@ -78,10 +79,20 @@
   {% assign obstacle_trace_x = IDX_0.obstacle_trace_x %}
   {% assign obstacle_trace_y = IDX_0.obstacle_trace_y %}
   {% assign route_path = IDX_0.route_path %}
+  {% assign route_start_x = IDX_0.route_start_x %}
+  {% assign route_start_y = IDX_0.route_start_y %}
+  {% assign route_end_x = IDX_0.route_end_x %}
+  {% assign route_end_y = IDX_0.route_end_y %}
   {% assign message = IDX_0.message %}
 {% endif %}
 {% if message == blank %}
   {% assign message = "No Trailhead data found. Check polling URL, save, then force refresh." %}
+{% endif %}
+{% if route_start_x == blank %}
+  {% assign route_start_x = 6 %}
+  {% assign route_start_y = 43 %}
+  {% assign route_end_x = 94 %}
+  {% assign route_end_y = 31 %}
 {% endif %}
 
 {% if trail_name == blank %}
@@ -93,8 +104,25 @@
   <div class="layout trailhead-quad">
     <div class="thq-kicker">{{ state_label }} / {{ season_label }}</div>
     <div class="thq-name" data-value-fit="true" data-value-fit-max-height="48">{{ trail_name }}</div>
-    <svg class="thq-route" viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Simplified trail trace">
-      <path d="{{ route_path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+    <svg class="thq-route" viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Topo-style trail trace">
+      <defs>
+        <pattern id="thq-stipple" width="4" height="4" patternUnits="userSpaceOnUse">
+          <circle cx="1" cy="1" r="0.18" fill="#aaa" />
+          <circle cx="3" cy="3" r="0.14" fill="#c0c0c0" />
+        </pattern>
+      </defs>
+      <rect x="0" y="0" width="100" height="60" fill="#fbfbfb" />
+      <rect x="0" y="0" width="100" height="60" fill="url(#thq-stipple)" opacity="0.35" />
+      <g fill="none" stroke-linecap="round">
+        <path d="M-5 18 C10 11 25 13 38 8 S68 1 106 11" stroke="#d4d4d4" stroke-width="0.8" />
+        <path d="M-7 32 C9 24 24 26 39 20 S69 13 107 25" stroke="#c3c3c3" stroke-width="0.8" />
+        <path d="M-5 46 C10 39 26 43 41 36 S72 30 108 42" stroke="#b8b8b8" stroke-width="0.75" />
+      </g>
+      <path d="{{ route_path }}" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="7" />
+      <path d="{{ route_path }}" fill="none" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" />
+      <path d="{{ route_path }}" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5" />
+      <circle cx="{{ route_start_x }}" cy="{{ route_start_y }}" r="1.7" fill="#fff" stroke="#000" stroke-width="1" />
+      <circle cx="{{ route_end_x }}" cy="{{ route_end_y }}" r="1.7" fill="#000" stroke="#000" stroke-width="1" />
       <circle cx="{{ obstacle_trace_x }}" cy="{{ obstacle_trace_y }}" r="3.4" fill="#fff" stroke="#000" stroke-width="2.4" />
     </svg>
     <div class="thq-footer">

@@ -7,6 +7,7 @@
     "generate": "npm run generate:worker && npm run generate:static",
     "generate:static": "node scripts/generate-static-api.mjs",
     "generate:worker": "node scripts/build-worker-catalog.mjs",
+    "map:convert": "node scripts/convert-map-image.mjs",
     "validate": "node scripts/validate.mjs",
     "zip": "mkdir -p dist && rm -f dist/trailhead-private-plugin.zip && (cd trmnl-import && zip -q ../dist/trailhead-private-plugin.zip settings.yml full.liquid half_horizontal.liquid half_vertical.liquid quadrant.liquid)",
     "build": "npm run generate && npm run validate && npm run zip",
