@@ -1,129 +1,3 @@
-<style>
-  .trailhead-full {
-    color: #000;
-    display: flex;
-    flex-direction: column;
-    font-family: Inter, Arial, sans-serif;
-    gap: 12px;
-    height: 100%;
-  }
-
-  .th-grid {
-    display: grid;
-    flex: 1;
-    gap: 14px;
-    grid-template-columns: 1.1fr 0.9fr;
-    min-height: 0;
-  }
-
-  .th-panel {
-    border: 2px solid #000;
-    min-height: 0;
-    padding: 8px;
-  }
-
-  .th-map {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-  }
-
-  .th-route-svg {
-    background: #f7f7f7;
-    border: 1px solid #000;
-    flex: 1;
-    min-height: 218px;
-    width: 100%;
-  }
-
-  .th-profile-svg {
-    background: #fff;
-    border: 1px solid #000;
-    height: 72px;
-    width: 100%;
-  }
-
-  .th-info {
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-  }
-
-  .th-kicker {
-    font-size: 14px;
-    font-weight: 800;
-    letter-spacing: 0;
-    text-transform: uppercase;
-  }
-
-  .th-name {
-    font-size: 46px;
-    font-weight: 900;
-    line-height: 0.95;
-  }
-
-  .th-highlight {
-    border-top: 2px solid #000;
-    font-size: 18px;
-    line-height: 1.18;
-    padding-top: 8px;
-  }
-
-  .th-stats {
-    display: grid;
-    gap: 7px;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .th-stat {
-    border: 1px solid #000;
-    padding: 7px 6px;
-  }
-
-  .th-stat-value {
-    display: block;
-    font-size: 23px;
-    font-weight: 900;
-    line-height: 1;
-  }
-
-  .th-stat-label {
-    display: block;
-    font-size: 10px;
-    font-weight: 800;
-    margin-top: 4px;
-    text-transform: uppercase;
-  }
-
-  .th-obstacle {
-    background: #000;
-    color: #fff;
-    padding: 10px;
-  }
-
-  .th-obstacle-name {
-    display: block;
-    font-size: 25px;
-    font-weight: 900;
-    line-height: 1;
-  }
-
-  .th-obstacle-copy {
-    display: block;
-    font-size: 15px;
-    line-height: 1.18;
-    margin-top: 7px;
-  }
-
-  .th-meta {
-    display: flex;
-    font-size: 13px;
-    font-weight: 800;
-    justify-content: space-between;
-    text-transform: uppercase;
-  }
-</style>
-
 {% if trail_name == blank and data.trail_name != blank %}
   {% assign trail_name = data.trail_name %}
   {% assign state_label = data.state_label %}
@@ -187,17 +61,15 @@
 {% endif %}
 
 {% if trail_name == blank %}
-  <div class="layout trailhead-full">
-    <div class="th-panel">
-      <div class="th-name">No Trailhead data</div>
-      <div class="th-highlight">{{ message }}</div>
-    </div>
+  <div class="layout layout--col gap">
+    <span class="value value--large">No Trailhead data</span>
+    <span class="description">{{ message }}</span>
   </div>
 {% else %}
-  <div class="layout trailhead-full">
-    <div class="th-grid">
-      <div class="th-panel th-map">
-        <svg class="th-route-svg" viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Topo-style trail map">
+  <div class="layout layout--col gap--none">
+    <div class="grid grow" style="gap:14px">
+      <div class="col--span-7 flex flex--col gap--small border p--2">
+        <svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-label="Topo-style trail map" class="w--full grow border" style="min-height:218px;background:#fbfbfb">
           <defs>
             <pattern id="th-full-stipple" width="3" height="3" patternUnits="userSpaceOnUse">
               <circle cx="0.7" cy="0.8" r="0.18" fill="#9a9a9a" />
@@ -248,7 +120,8 @@
             <circle cx="0" cy="-1" r="1.8" fill="#000" />
           </g>
         </svg>
-        <svg class="th-profile-svg" viewBox="0 0 100 48" preserveAspectRatio="none" aria-label="Simplified elevation profile">
+
+        <svg viewBox="0 0 100 48" preserveAspectRatio="none" aria-label="Simplified elevation profile" class="w--full border" style="height:72px;background:#fff">
           <rect x="0" y="0" width="100" height="48" fill="#fff" />
           <g stroke="#dedede" stroke-width="0.7">
             <line x1="0" y1="12" x2="100" y2="12" />
@@ -260,36 +133,42 @@
           <line x1="0" y1="45" x2="100" y2="45" stroke="#000" stroke-width="1" />
           <line x1="{{ obstacle_position_pct }}" y1="4" x2="{{ obstacle_position_pct }}" y2="45" stroke="#000" stroke-dasharray="2 2" stroke-width="1" />
         </svg>
-        <div class="th-meta">
-          <span>{{ profile_min_ft }} ft</span>
-          <span>{{ obstacle_position_pct }}% route</span>
-          <span>{{ profile_max_ft }} ft</span>
+
+        <div class="flex flex--row flex--between">
+          <span class="label label--small text--bold text--uppercase">{{ profile_min_ft }} ft</span>
+          <span class="label label--small text--bold text--uppercase">{{ obstacle_position_pct }}% route</span>
+          <span class="label label--small text--bold text--uppercase">{{ profile_max_ft }} ft</span>
         </div>
       </div>
 
-      <div class="th-info">
+      <div class="col--span-5 flex flex--col gap--small">
         <div>
-          <div class="th-kicker">{{ state_label }} / {{ trail_region }} / {{ season_label }}</div>
-          <div class="th-name" data-value-fit="true" data-value-fit-max-height="96">{{ trail_name }}</div>
+          <span class="label label--small text--uppercase text--bold">{{ state_label }} / {{ trail_region }} / {{ season_label }}</span>
+          <div class="value value--xxxlarge" data-fit-value="true" data-value-fit-max-height="96">{{ trail_name }}</div>
         </div>
-        <div class="th-stats">
-          <div class="th-stat">
-            <span class="th-stat-value">{{ difficulty }}/10</span>
-            <span class="th-stat-label">Difficulty</span>
+
+        <div class="grid grid--cols-3 gap--small">
+          <div class="outline p--2">
+            <span class="value value--medium">{{ difficulty }}/10</span>
+            <span class="label label--xsmall text--uppercase text--bold">Difficulty</span>
           </div>
-          <div class="th-stat">
-            <span class="th-stat-value">{{ length_mi }}</span>
-            <span class="th-stat-label">Miles</span>
+          <div class="outline p--2">
+            <span class="value value--medium">{{ length_mi }}</span>
+            <span class="label label--xsmall text--uppercase text--bold">Miles</span>
           </div>
-          <div class="th-stat">
-            <span class="th-stat-value">{{ elevation_gain_ft }}</span>
-            <span class="th-stat-label">Ft Gain</span>
+          <div class="outline p--2">
+            <span class="value value--medium">{{ elevation_gain_ft }}</span>
+            <span class="label label--xsmall text--uppercase text--bold">Ft Gain</span>
           </div>
         </div>
-        <div class="th-highlight">{{ highlight }}</div>
-        <div class="th-obstacle">
-          <span class="th-obstacle-name">{{ obstacle_name }}</span>
-          <span class="th-obstacle-copy">{{ obstacle_blurb }}</span>
+
+        <div class="border--top pt--2">
+          <span class="description description--large" data-clamp="3">{{ highlight }}</span>
+        </div>
+
+        <div class="bg--black p--3 flex flex--col gap--xsmall">
+          <span class="label label--large text--bold label--inverted">{{ obstacle_name }}</span>
+          <span class="description label--inverted" data-clamp="3">{{ obstacle_blurb }}</span>
         </div>
       </div>
     </div>
