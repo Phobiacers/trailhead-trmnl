@@ -2,7 +2,7 @@
 name: Trailhead
 strategy: polling
 refresh_interval: 1440
-polling_url: https://Phobiacers.github.io/trailhead-trmnl/api/##{{ state }}/difficulty-##{{ max_difficulty }}/seasonal-##{{ seasonal_only }}.json
+polling_url: https://Phobiacers.github.io/trailhead-trmnl/api/{{ trmnl.plugin_settings.custom_fields_values.state | default: 'ca' }}/difficulty-{{ trmnl.plugin_settings.custom_fields_values.max_difficulty | default: '10' }}/seasonal-{{ trmnl.plugin_settings.custom_fields_values.seasonal_only | default: 'true' }}.json
 polling_headers: ''
 polling_verb: GET
 no_screen_padding: 'no'

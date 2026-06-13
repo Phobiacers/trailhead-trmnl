@@ -68,6 +68,12 @@ The TRMNL polling URL uses form fields to pick the static JSON file:
 - `max_difficulty`: `1` through `10`
 - `seasonal_only`: `true` or `false`
 
+Inside TRMNL, use the saved custom field values explicitly:
+
+```text
+https://Phobiacers.github.io/trailhead-trmnl/api/{{ trmnl.plugin_settings.custom_fields_values.state | default: 'ca' }}/difficulty-{{ trmnl.plugin_settings.custom_fields_values.max_difficulty | default: '10' }}/seasonal-{{ trmnl.plugin_settings.custom_fields_values.seasonal_only | default: 'true' }}.json
+```
+
 Example:
 
 ```text
